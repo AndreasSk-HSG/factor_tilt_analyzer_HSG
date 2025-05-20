@@ -10,7 +10,8 @@ In finance, portfolio risk is often assessed based on how sensitive the portfoli
 
 
 MAYBE EXPLAIN FACTORS ALREADY HERE?
-
+## How to run:
+![alt text](img/demonstration.gif)
   
 
 
