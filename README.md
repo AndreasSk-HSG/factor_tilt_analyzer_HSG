@@ -29,46 +29,70 @@ You can install the dependencies via:
 pip install -r requirements.txt
 ```
 
-If downloads fail from Yahoo Finance, make sure that the **most recent version of yfinance** is installed.
+If downloads fail from the Yahoo Finance API, make sure that the **most recent version of yfinance** is installed.
 ```bash
 pip install --upgrade yfinance
 ```
 
+## Project Documentation:
+### Process Description:
+1. Prompt the user for stock tickers in main.py
+2. Check the validity of the stock tickers and terminate the program otherwise
+3. Prompt the user for a market benchmark
+4. Download the return data for the stock tickers and the market benchmark from the Yahoo Finance API
+5. Construct the minimum variance portfolio programmatically based on the returns of the individual stock tickers
+6. Calculate and compare conventional risk and return measures of the market benchmark and the minimum variance portfolio
+7. Conduct a style analysis (OLS regression) of the minimum variance portfolio and visualize the factor exposures in a graphical interpretation in the console 
 
-## Short description of what the thing does + Folder structure 
+### Project Layout:
+```
+factor_tilt_analyzer/
+│
+├── main.py                            # Main logic of the program: Prompts the user for input, calls other functions 
+├── config.py                          # Configuration file for parameters and settings (e.g., declares valid market benchmarks)
+│
+├── utils/                             # Utility functions:
+│   └── validity_input_check.py        # Validates user input with regular expressions and by calling the Yahoo Finance API
+|
+├── data/                              # Data-related scripts:
+│   └── data_fetcher.py                # Script to fetch returns for one or several stocks and the market benchmark from the Yahoo Finance API via yfinance
+│
+├── analysis/                          # Core analysis modules:
+│   ├── minimum_variance_portfolio.py  # Computes the weights and returns of the minimum variance portfolio based on the stock tickers provided by the user 
+│   ├── portfolio_analyzer.py          # Runs style analysis (OLS regression) of the minimum variance portfolio and prints a graphical interpretation to console 
+│   └── portfolio_statistics.py        # Generates and prints conventional portfolio risk and return metrics to compare the market benchmark against the minimum variance portfolio (constructed based on user input)
+│
+└── input/                             # Directory for input files
+```
 
-
-Description of each file 
-Folder structure 
-
-
-
-
-
-
-## Execution
-Download the thing
-Navigate to factor_... directory on your system in the concosle.
-Run with python main.py
-
-
-
-Examplary demonstration with Tesla (TSLA), Apple (AAPL), Ford (F), and McDonalds (MCD).
-
+## Execution:
+1. Download the repository from GitHub.
+2. Open the console and navigate to the directory of **factor_tilt_analyzer** on your machine.
+3. Execute the program with Python by running:
+```bash
+python main.py
+```
+4. Enter input as prompted by the program.
+   
+The following video demonstrates an example process using the stock tickers for Tesla (TSLA), Apple (AAPL), Ford (F), and McDonald's (MCD):
 
 ![alt text](img/demonstration.gif)
   
-
-
-
-
-
-
-
-
-
-
-
+## Academic Sources:
+- Fama, E. F., & French, K. R. (1993). Common risk factors in the returns on stocks and bonds. Journal of Financial Economics, 33(1), 3–56.
+- Carhart, M. M. (1997). On persistence in mutual fund performance. The Journal of Finance, 52(1), 57–82.
+- [Fama-French Data Library.](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html)
+- [Theoretical background for a closed-end solution for the minimum variance portfolio.](https://faculty.washington.edu/ezivot/econ424/portfolioTheoryMatrix.pdf)
 
 ## Disclaimer:
-Worked in May with Version XXX, Windows, ...
+This code was developed and tested in the **Spyder IDE** using the **Anaconda Distribution** on a **Windows machine**. It was last confirmed to work correctly in **May 2025** with the following environment setup:
+
+- **Operating System**: Windows 11  
+- **Anaconda Version**: 24.11.3  
+- **Python Version**: 3.12.7  
+- **Library Versions**:
+  - `yfinance==0.2.59`
+  - `pandas==2.2.2`
+  - `numpy==1.26.4`
+  - `statsmodels==0.14.2`
+  - `requests==2.32.3`
