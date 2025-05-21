@@ -86,6 +86,15 @@ python main.py
 The following video demonstrates an example process using the stock tickers for Tesla (TSLA), Apple (AAPL), Ford (F), and McDonald's (MCD):
 
 ![alt text](img/demonstration.gif)
+
+## Unit Tests:
+1. Open the console and navigate to the root directory of **factor_tilt_analyzer** on your machine.
+2. Execute the suite of all unit tests in the project by running:
+```bash
+python -m pytest tests/
+```
+
+![alt text](img/demonstration_unittests.gif)
   
 ## Academic Sources:
 - Fama, E. F., & French, K. R. (1993). Common risk factors in the returns on stocks and bonds. Journal of Financial Economics, 33(1), 3–56.
