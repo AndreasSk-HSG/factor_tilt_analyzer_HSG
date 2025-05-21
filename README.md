@@ -63,6 +63,14 @@ factor_tilt_analyzer/
 │   └── portfolio_statistics.py        # Generates and prints conventional portfolio risk and return metrics to compare the market benchmark against the minimum variance portfolio (constructed based on user input)
 │
 └── input/                             # Directory for input files
+|
+└── tests/                             # Unit tests
+    ├── __init__.py
+    ├── test_data_fetcher.py
+    ├── test_validity_input_check.py
+    ├── test_minimum_variance_portfolio.py
+    ├── test_portfolio_analyzer.py
+    ├── test_portfolio_statistics.py
 ```
 
 ## Program Execution:
