@@ -22,7 +22,8 @@ The following Python libraries are required for the project to run:
 - pandas
 - statsmodels
 - requests
-- yfinance 
+- yfinance
+- pytest
 
 You can install the dependencies via:
 ```bash
@@ -104,3 +105,4 @@ This code was developed and tested in the **Spyder IDE** using the **Anaconda Di
   - `numpy==1.26.4`
   - `statsmodels==0.14.2`
   - `requests==2.32.3`
+  - `pytest==7.4.4`
