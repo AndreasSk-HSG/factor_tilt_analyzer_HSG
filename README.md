@@ -44,7 +44,7 @@ pip install --upgrade yfinance
 6. Calculate and compare conventional risk and return measures of the market benchmark and the minimum variance portfolio
 7. Conduct a style analysis (OLS regression) of the minimum variance portfolio and visualize the factor exposures in a graphical interpretation in the console 
 
-### Project Layout:
+### Project Directory Layout:
 ```
 factor_tilt_analyzer/
 │
@@ -65,7 +65,7 @@ factor_tilt_analyzer/
 └── input/                             # Directory for input files
 ```
 
-## Execution:
+## Program Execution:
 1. Download the repository from GitHub.
 2. Open the console and navigate to the directory of **factor_tilt_analyzer** on your machine.
 3. Execute the program with Python by running:
