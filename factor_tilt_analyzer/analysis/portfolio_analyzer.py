@@ -85,6 +85,10 @@ def create_factor_dataset() -> pd.DataFrame:
 
     Raises
     ------
+    FileNotFoundError
+        If any of the required CSV files are missing.
+    IOError
+        If an error occurs while reading the CSV files.
     ValueError
         If the datasets cannot be joined, contain missing values after the join,
         or do not include all expected columns ("Mom", "Mkt_rf", "SMB", "HML", "Rf").
@@ -99,19 +103,37 @@ def create_factor_dataset() -> pd.DataFrame:
         - HML: Value premium
         - Rf: Risk-free rate
     """
-
-
+        
     # Load the CSV with the momentum factor
-    mom_df = read_fama_french_csv("input/momentum_factor.csv", ["Mom"])
+    mom_path = "input/momentum_factor.csv"
     
     # Load the CSV with the other three factors (Market, SMB, HML)
-    three_factors_df = read_fama_french_csv("input/research_factors.csv", ["Mkt_rf", "SMB", "HML", "Rf"])
+    three_factors_path = "input/research_factors.csv"
+    
+    # Make sure path is valid
+    if not os.path.exists(mom_path):
+        raise FileNotFoundError(f"Missing file: {mom_path}")
+    if not os.path.exists(three_factors_path):
+        raise FileNotFoundError(f"Missing file: {three_factors_path}")
+    
+    # Error-handling for reading CSV files
+    try:
+        mom_df = read_fama_french_csv(mom_path, ["Mom"])
+    except Exception as e:
+        raise IOError(f"Failed to read {mom_path}: {e}")
 
+    try:
+        three_factors_df = read_fama_french_csv(three_factors_path, ["Mkt_rf", "SMB", "HML", "Rf"])
+    except Exception as e:
+        raise IOError(f"Failed to read {three_factors_path}: {e}")
+
+    # Error-handling for joining CSV files
     try:
         combined_factors_df = mom_df.join(three_factors_df, how="inner")
     except Exception as e:
         raise ValueError(f"Failed to join momentum and Fama-French datasets: {e}")
 
+    # Checks for the final DataFrame
     if combined_factors_df.isnull().values.any():
         raise ValueError("Combined factor dataset contains missing values after join.")
 
