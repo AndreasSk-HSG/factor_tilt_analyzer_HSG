@@ -30,6 +30,7 @@ def get_start_date(in_end: str, in_period: str) -> str:
         Start date in YYYY-MM-DD format.
     """
     
+    # Type checks
     if not isinstance(in_end, str):
         raise TypeError("End date must be provided as a string.")
     if not isinstance(in_period, str):
@@ -50,6 +51,7 @@ def get_start_date(in_end: str, in_period: str) -> str:
 
     value = int(value_str)
 
+    # Calculate the start date based on the unit input
     if unit == "y":
         start = end - pd.DateOffset(years=value)
     elif unit == "mo":
@@ -117,6 +119,8 @@ def fetch_returns(tickers: list[str], in_period: str = "2y", in_interval: str = 
     
     for ticker in tickers:
         try:
+            # Call the Yahoo Finance API via the yfinance package
+            # For documentation of arguments: see above, or alternatively, the YFinance documentation
             df = yf.download(ticker, period=in_period, interval=in_interval, auto_adjust=in_auto_adjust, start=in_start, end=in_end)
             
             # Abort the program if the API returns an empty DataFrame (implying no data was found)
@@ -128,7 +132,7 @@ def fetch_returns(tickers: list[str], in_period: str = "2y", in_interval: str = 
             return_series = df["Adj Close"].pct_change().dropna()
             return_series.name = ticker
             
-            returns[ticker] = return_series
+            returns[ticker] = return_series # Add to the dictionary
         except Exception as e:
             raise HTTPError(f"Failed to fetch data for '{ticker}': {e}")
 
@@ -198,6 +202,7 @@ def fetch_benchmark_returns(mkt_benchmark_ticker: str, in_period: str = "2y", in
             in_auto_adjust=in_auto_adjust,
             in_end=in_end
         )
+    # Catch potential Exceptions
     except Exception as e:
         raise RuntimeError(f"Failed to fetch benchmark returns for '{mkt_benchmark_ticker}': {e}") from e
 
