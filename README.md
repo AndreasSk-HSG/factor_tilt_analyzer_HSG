@@ -6,7 +6,9 @@
 - E-Mail: andreas.skibin@student.unisg.ch
 
 ## Topic Motivation:
-In finance, portfolio risk is often assessed based on how sensitive the portfolio is to overall market movements. Market movements, in this context, refer to the returns of a market benchmark portfolio (e.g., the S&P 500 Index). The traditional assumption in many financial models is therefore that, for well-diversified investors, sensitivity to aggregate market movements is the only relevant measure of risk. However, research by Fama and French (1993) and Carhart (1997) showed that other factors such as size, value, and momentum also play a key, and often even more important role in explaining a portfolio’s risk exposure. For example, their research demonstrates that smaller-sized firms (proxied by market capitalization) earn consistently higher returns than larger firms. Overweighting small firms in a portfolio, however, might additional risk to a portfolio that is not captured by traditional risk measures. Since the work of Fama and French, these additional factors have become widely accepted in both academic research and professional investment practice. Yet, despite their importance, retail investors still face significant barriers when trying to assess their own portfolios in terms of these factor exposures. This tool aims to bridge that gap by enabling users to easily analyze how their portfolios are exposed to these key risk factors.
+In finance, portfolio risk is often assessed based on how sensitive the portfolio is to overall market movements. Market movements, in this context, refer to the returns of a market benchmark portfolio (e.g., the S&P 500 Index). The traditional assumption in many financial models is therefore that, for well-diversified investors, sensitivity to aggregate market movements is the only relevant measure of risk. However, research by Fama and French (1993) and Carhart (1997) showed that other factors such as size, value, and momentum also play a key, and often even more important role in explaining a portfolio’s risk exposure. For example, their research demonstrates that smaller-sized firms (proxied by market capitalization) earn consistently higher returns than larger firms. Overweighting small firms in a portfolio, however, might additional risk to a portfolio that is not captured by traditional risk measures.  
+
+Since the work of Fama and French, these additional factors have become widely accepted in both academic research and professional investment practice. Yet, despite their importance, retail investors still face significant barriers when trying to assess their own portfolios in terms of these factor exposures. This tool aims to bridge that gap by enabling users to easily analyze how their portfolios are exposed to these key risk factors.
 
 ### Fama-French & Momentum Factors Explained:
 - **Mkt_RF (Market Excess Return):** Return of the market portfolio minus the risk-free rate; captures the equity premium. Positive exposure reflects that the portfolio behaves like the overall market, e.g., it gains when the market goes up.
@@ -37,6 +39,7 @@ pip install --upgrade yfinance
 
 ## Project Documentation:
 ### Process Description:
+The program executes the following steps:
 1. Prompt the user for stock tickers in main.py
 2. Check the validity of the stock tickers and terminate the program otherwise
 3. Prompt the user for a market benchmark
@@ -75,20 +78,23 @@ factor_tilt_analyzer/
 ```
 
 ## Program Execution:
-1. Download the repository from GitHub.
-2. Open the console and navigate to the directory of **factor_tilt_analyzer** on your machine.
+To execute the program on your machine, please follow these steps:
+1. Download the repository from GitHub
+2. Open the console and navigate to the directory of **factor_tilt_analyzer** on your machine
 3. Execute the program with Python by running:
 ```bash
 python main.py
 ```
-4. Enter input as prompted by the program.
-   
-The following video demonstrates an example process using the stock tickers for Tesla (TSLA), Apple (AAPL), Ford (F), and McDonald's (MCD):
+4. Enter input as prompted by the program
+
+The following video demonstrates an exemplary way of executing the program by using the stock tickers for Tesla (TSLA), Apple (AAPL), Ford (F), and McDonald's (MCD):
 
 ![alt text](img/demonstration.gif)
 
 ## Unit Tests:
-1. Open the console and navigate to the root directory of **factor_tilt_analyzer** on your machine.
+The project also includes a comprehensive suite of unit tests for all functions to ensure the functionality of the program. Before running these tests, please make sure that **pytest** is installed on your machine (see the **Requirements** section for details).
+To execute these tests locally, follow these steps:
+1. Open the console and navigate to the root directory of **factor_tilt_analyzer** on your machine
 2. Execute the suite of all unit tests in the project by running:
 ```bash
 python -m pytest tests/
