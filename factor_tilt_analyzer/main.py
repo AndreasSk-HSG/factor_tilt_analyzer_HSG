@@ -42,9 +42,13 @@ def main() -> None:
     
         # Prompt for stock tickers
         # Store the input in a list and transform string to uppercase
-        tickers = input("Enter tickers (comma-separated): ").upper().split(",") 
+        tickers = input("Enter tickers (comma-separated). At least two stocks are required: ").upper().split(",") 
         # Remove possible whitespace
         tickers = [ticker.strip() for ticker in tickers]
+        
+        if len(tickers) < 2:
+            print("The program failed because at least two tickers are required to calculate the minimum variance portfolio.")
+            return # Gracefully exit without stack trace
         
         print(f"\nYou selected: {tickers}\n")
         # Check the validity of the tickers: 
