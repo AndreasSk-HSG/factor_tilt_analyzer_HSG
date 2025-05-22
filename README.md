@@ -108,6 +108,9 @@ python -m pytest tests/
 - [Fama-French Data Library.](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html)
 - [Theoretical background for a closed-end solution for the minimum variance portfolio.](https://faculty.washington.edu/ezivot/econ424/portfolioTheoryMatrix.pdf)
 
+## Note on AI Assistance:
+ChatGPT was used as an auxiliary aid to assist with debugging during the development of this program. However, no AI tools were involved in designing the architecture, implementing the core functionality, or developing the main logic of the project. All design decisions, code implementations, and problem-solving processes are entirely my own original work.
+
 ## Disclaimer:
 This code was developed and tested in the **Spyder IDE** using the **Anaconda Distribution** on a **Windows machine**. It was last confirmed to work correctly in **May 2025** with the following environment setup:
 
